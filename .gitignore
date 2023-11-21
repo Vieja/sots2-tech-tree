@@ -1,0 +1,10 @@
+.idea
+.DS_Store
+
+dist/*
+!dist/js/
+node_modules/
+
+# uncomment to block committing copyright images
+# images/
+# json/
