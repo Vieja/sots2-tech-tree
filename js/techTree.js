@@ -50,11 +50,10 @@ var techTree = (function(api) {
       api.orientNodes(d, depths);
     });
   };
-  api.createTree = function createTree(jsonNodesData, settings, offsets) {
+  api.createTree = function createTree(jsonNodesData, settings) {
     api._clear();
     api.nodesData = jsonNodesData;
     api.loadSettings(settings);
-    api.loadOffsets(offsets);
     api.appendSVG();
     api.setupImageUtils(svg);
     api.parseNodesData();

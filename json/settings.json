@@ -1,3 +1,6 @@
 {
-
+    "imageFolderName": "images/high_res",
+    "nodeOrientation": "horizontal",
+    "initialLinkColor": "#CCC",
+    "useShadows": false
 }

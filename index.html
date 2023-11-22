@@ -27,7 +27,7 @@
     <script type="text/javascript" src="js/jsonLoader.js"></script>
     <script type="text/javascript" src="js/techTree.js"></script>
 <!-- endbuild -->
-    <div class="settingPicker">
+    <!-- <div class="settingPicker">
         <div id="imageSource" class="btn-group btn-group-justified" role="group" aria-label="...">
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-default">
@@ -89,53 +89,137 @@
                 </button>
             </div>
         </div>
-    </div>
+    </div> -->
+
+    <ul class="float-Holder">
+        <li class="float-Element float-Highlight float-All">
+          <a data-scroll='top' class="float-Contents">
+            <h2>All <img src="../assets/icons/research_icon.png" class="float-Image"> </h2>
+          </a>
+        </li>
+        <li class="float-Element float-Lowlight float-Physics">
+          <a data-scroll='top' class="float-Contents">
+            <h2>Physics <img src="../assets/icons/physics_research.png" class="float-Image"> </h2>
+          </a>
+        </li>
+        <li class="float-Element float-Lowlight float-Society">
+          <a data-scroll='top' class="float-Contents">
+            <h2>Society <img src="../assets/icons/society_research.png" class="float-Image"> </h2>
+          </a>
+        </li>
+        <li class="float-Element float-Lowlight float-Engineering">
+          <a data-scroll='top' class="float-Contents">
+            <h2>Engineering <img src="../assets/icons/engineering_research.png" class="float-Image"> </h2>
+          </a>
+        </li>
+        <li class="float-Element float-Lowlight float-Energy-Weapons">
+          <a data-scroll='top' class="float-Contents">
+            <h2>Energy Weapons <img src="../assets/img/energyweapons_tree.png" class="float-Image"> </h2>
+          </a>
+        </li>
+        <li class="float-Element float-Lowlight float-Search">
+          <input id="deepsearch" placeholder="Type to search" >
+        </li>
+        <li class="float-RightElement float-RightBuffer">
+          <a href="../index.html" class="float-RightContents">
+            <h2><img src="../assets/icons/back_button.png" class="float-RightImage"> Back</h2>
+          </a>
+        </li>
+        <li class="float-RightElement">
+          <a data-scroll='top' class="float-RightContents">
+            <h2><img src="../assets/icons/up_to_top.png" class="float-RightImage"> Top</h2>
+          </a>
+        </li>
+        <li class="float-RightElement float-RightBuffer research hide">
+          <a id="research_save" class="float-RightContents">
+            <h2>Save</h2>
+          </a>
+        </li>
+        <li class="float-RightElement research hide">
+          <a id="research_load" class="float-RightContents">
+            <h2>Load</h2>
+          </a>
+        </li>
+        <li class="float-RightElement research hide">
+          <span class="float-RightContents">Research List:
+            <input id="research_selection" list="research_list">
+            <datalist id="research_list">
+            </datalist>
+          </span>
+        </li>
+        <li class="float-RightElement research hide">
+          <a id="research_remove" class="float-RightContents">
+            <h2>Remove</h2>
+          </a>
+        </li>
+        <li class="float-Element" style="float: right;padding-left: 0px;padding-right: 0px;">
+          <div>
+            <a title="GDPR-compliant Web Analytics" href="https://clicky.com/101366149"><img alt="Clicky" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>
+            <script async src="//static.getclicky.com/101366149.js"></script>
+            <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/101366149ns.gif" /></p></noscript>
+          </div>
+        </li>
+      </ul>
+      <div id="tech-tree" style="margin-top:50px">
+        <div id="tech-tree-energy-weapons"></div>
+        <div id="tech-tree-physics">
+      
+        </div>
+        <div id="tech-tree-society">
+      
+        </div>
+        <div id="tech-tree-engineering">
+      
+        </div>
+        <div id="tech-tree-anomalies" class="float-NoDisplay">
+      
+        </div>
+      </div>
 
     <script>
-        // based on http://jaketrent.com/post/d3-class-operations/
-        function onClick(container, configs){
-            container.selectAll("div").select("button")
-                .on("click", function (_,i) {
-                    techTree.deleteTree();
-                    techTree.createTree(techTree.nodesData, configs[i], techTree.offsetsData);
-                    var activeClass = "btn-primary";
-                    var alreadyIsActive = d3.select(this).classed(activeClass);
-                    container.selectAll("div").select("button")
-                        .classed(activeClass, false);
-                    d3.select(this).classed(activeClass, !alreadyIsActive);
-                });
-        }
-        onClick(d3.select("#imageSource"), [{
-            settings: {
-                useSpriteSheet : true,
-                imageFolderName: "images",
-                spriteSheetFileName : "spriteSheet.png"
-            }
-        },{
-            settings: {useSpriteSheet : false, imageFolderName: "images/low_res"}
-        },{
-            settings: {useSpriteSheet : false, imageFolderName: "images/high_res"}
-        }]);
-        onClick(d3.select("#nodeOrientation"), [{
-            settings: {nodeOrientation: "circular"}
-        },{
-            settings: {nodeOrientation: "vertical"}
-        },{
-            settings: {nodeOrientation: "horizontal"}
-        }]);
-        onClick(d3.select("#initialLinkColor"), [{
-            settings: {initialLinkColor: "#CCC"}
-        },{
-            settings: {initialLinkColor: "none"}
-        }]);
-        onClick(d3.select("#useShadows"), [{
-            settings: {useShadows: true}
-        },{
-            settings: {useShadows: false}
-        }]);
+        // // based on http://jaketrent.com/post/d3-class-operations/
+        // function onClick(container, configs){
+        //     container.selectAll("div").select("button")
+        //         .on("click", function (_,i) {
+        //             techTree.deleteTree();
+        //             techTree.createTree(techTree.nodesData, configs[i], techTree.offsetsData);
+        //             var activeClass = "btn-primary";
+        //             var alreadyIsActive = d3.select(this).classed(activeClass);
+        //             container.selectAll("div").select("button")
+        //                 .classed(activeClass, false);
+        //             d3.select(this).classed(activeClass, !alreadyIsActive);
+        //         });
+        // }
+        // onClick(d3.select("#imageSource"), [{
+        //     settings: {
+        //         useSpriteSheet : true,
+        //         imageFolderName: "images",
+        //         spriteSheetFileName : "spriteSheet.png"
+        //     }
+        // },{
+        //     settings: {useSpriteSheet : false, imageFolderName: "images/low_res"}
+        // },{
+        //     settings: {useSpriteSheet : false, imageFolderName: "images/high_res"}
+        // }]);
+        // onClick(d3.select("#nodeOrientation"), [{
+        //     settings: {nodeOrientation: "circular"}
+        // },{
+        //     settings: {nodeOrientation: "vertical"}
+        // },{
+        //     settings: {nodeOrientation: "horizontal"}
+        // }]);
+        // onClick(d3.select("#initialLinkColor"), [{
+        //     settings: {initialLinkColor: "#CCC"}
+        // },{
+        //     settings: {initialLinkColor: "none"}
+        // }]);
+        // onClick(d3.select("#useShadows"), [{
+        //     settings: {useShadows: true}
+        // },{
+        //     settings: {useShadows: false}
+        // }]);
         techTree.createTreeFromJSON({
             dataFileName: "json/data.json",
-            offsetsFileName: "json/offsets.json",
             settingsFileName: "json/settings.json"
         });
     </script>

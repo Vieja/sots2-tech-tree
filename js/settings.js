@@ -38,8 +38,8 @@ var techTree = (function(api) {
     //general settings
     newSettings.settings = newSettings.settings || {};
     Object.keys(api.settings).forEach(function(key) {
-      if (newSettings.settings[key] != null) {
-        api.settings[key] = newSettings.settings[key];
+      if (newSettings[key] != null) {
+        api.settings[key] = newSettings[key];
       }
     });
     //dimensions
