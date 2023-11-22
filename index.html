@@ -160,10 +160,17 @@
           </div>
         </li>
       </ul>
-      <div id="tech-tree" style="margin-top:50px">
+      <div id="tech-tree" style="margin-left:50px">
+        <script>
+            techTree.createTreeFromJSON({
+        dataFileName: "json/data.json",
+        settingsFileName: "json/settings.json"
+    })
+        </script>
+
         <div id="tech-tree-energy-weapons"></div>
         <div id="tech-tree-physics">
-      
+            
         </div>
         <div id="tech-tree-society">
       
@@ -176,52 +183,52 @@
         </div>
       </div>
 
-    <script>
-        // // based on http://jaketrent.com/post/d3-class-operations/
-        // function onClick(container, configs){
-        //     container.selectAll("div").select("button")
-        //         .on("click", function (_,i) {
-        //             techTree.deleteTree();
-        //             techTree.createTree(techTree.nodesData, configs[i], techTree.offsetsData);
-        //             var activeClass = "btn-primary";
-        //             var alreadyIsActive = d3.select(this).classed(activeClass);
-        //             container.selectAll("div").select("button")
-        //                 .classed(activeClass, false);
-        //             d3.select(this).classed(activeClass, !alreadyIsActive);
-        //         });
-        // }
-        // onClick(d3.select("#imageSource"), [{
-        //     settings: {
-        //         useSpriteSheet : true,
-        //         imageFolderName: "images",
-        //         spriteSheetFileName : "spriteSheet.png"
-        //     }
-        // },{
-        //     settings: {useSpriteSheet : false, imageFolderName: "images/low_res"}
-        // },{
-        //     settings: {useSpriteSheet : false, imageFolderName: "images/high_res"}
-        // }]);
-        // onClick(d3.select("#nodeOrientation"), [{
-        //     settings: {nodeOrientation: "circular"}
-        // },{
-        //     settings: {nodeOrientation: "vertical"}
-        // },{
-        //     settings: {nodeOrientation: "horizontal"}
-        // }]);
-        // onClick(d3.select("#initialLinkColor"), [{
-        //     settings: {initialLinkColor: "#CCC"}
-        // },{
-        //     settings: {initialLinkColor: "none"}
-        // }]);
-        // onClick(d3.select("#useShadows"), [{
-        //     settings: {useShadows: true}
-        // },{
-        //     settings: {useShadows: false}
-        // }]);
+    <!-- <script>
+        // based on http://jaketrent.com/post/d3-class-operations/
+        function onClick(container, configs){
+            container.selectAll("div").select("button")
+                .on("click", function (_,i) {
+                    techTree.deleteTree();
+                    techTree.createTree(techTree.nodesData, configs[i], techTree.offsetsData);
+                    var activeClass = "btn-primary";
+                    var alreadyIsActive = d3.select(this).classed(activeClass);
+                    container.selectAll("div").select("button")
+                        .classed(activeClass, false);
+                    d3.select(this).classed(activeClass, !alreadyIsActive);
+                });
+        }
+        onClick(d3.select("#imageSource"), [{
+            settings: {
+                useSpriteSheet : true,
+                imageFolderName: "images",
+                spriteSheetFileName : "spriteSheet.png"
+            }
+        },{
+            settings: {useSpriteSheet : false, imageFolderName: "images/low_res"}
+        },{
+            settings: {useSpriteSheet : false, imageFolderName: "images/high_res"}
+        }]);
+        onClick(d3.select("#nodeOrientation"), [{
+            settings: {nodeOrientation: "circular"}
+        },{
+            settings: {nodeOrientation: "vertical"}
+        },{
+            settings: {nodeOrientation: "horizontal"}
+        }]);
+        onClick(d3.select("#initialLinkColor"), [{
+            settings: {initialLinkColor: "#CCC"}
+        },{
+            settings: {initialLinkColor: "none"}
+        }]);
+        onClick(d3.select("#useShadows"), [{
+            settings: {useShadows: true}
+        },{
+            settings: {useShadows: false}
+        }]);
         techTree.createTreeFromJSON({
             dataFileName: "json/data.json",
             settingsFileName: "json/settings.json"
         });
-    </script>
+    </script> -->
 </body>
 </html>
